@@ -100,7 +100,7 @@ Online rooms are in memory only. Restarting `shuanglu.service` clears active roo
 
 Status: synced.
 
-- Repository: `louiezhelee-uway/shuanglu`
+- Repository: `lolouw1010/shuanglu`
 - Visibility at sync time: public
 - Branch: `main`
 - Current verified application baseline: `0563e64d6f9ecc3afd77bb8a8363c20ac40a5353`.

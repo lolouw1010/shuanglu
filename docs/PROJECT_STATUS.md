@@ -146,7 +146,7 @@ Implemented:
 - Stopped local development listeners on `127.0.0.1:3001` and `127.0.0.1:3004` during the cloud handoff.
 - MiniMac operating policy is now cloud-only runtime testing: do not run the Shuanglu web service locally unless explicitly requested.
 - Added `docs/CLOUD_ASSETS.md` as the current cloud asset inventory and handoff document.
-- Initialized local Git repository and synced the project to GitHub at `louiezhelee-uway/shuanglu`.
+- Initialized local Git repository and synced the project to GitHub at `lolouw1010/shuanglu`.
 - BigNAS Git mirror configured as local remote `bignas` at `uway-nas:/var/services/homes/louieadmin/git/shuanglu.git`; the earlier receive-pack hang was resolved, and `bignas/main` was verified at `092ace8` alongside GitHub.
 - Mounted the generated 2D parchment PNG asset pass:
   - Top banner remains image-led.
