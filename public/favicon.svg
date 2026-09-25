@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="12" fill="#2b1512"/>
+  <rect x="4" y="4" width="56" height="56" rx="9" fill="none" stroke="#d8b36e" stroke-width="2"/>
+  <text x="32" y="43" fill="#fff4d5" font-family="serif" font-size="34" text-anchor="middle">双</text>
+</svg>

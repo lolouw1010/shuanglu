@@ -22,6 +22,7 @@ import type {
   OnlineRoomView,
   OnlineSeat,
 } from "@/online/types";
+import { onlineApiUrl } from "@/online/runtimeConfig";
 
 type GameMode = "human" | "ai" | "online";
 type BoardView = "classic" | "3d";
@@ -204,7 +205,7 @@ export const useGameStore = create<GameStore>((set, get) => ({
     try {
       const playerId = getClientPlayerId();
       const data = await readResponse<OnlineJoinResponse>(
-        await fetch("/api/rooms", {
+        await fetch(onlineApiUrl("/api/rooms"), {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ playerId }),
@@ -231,7 +232,7 @@ export const useGameStore = create<GameStore>((set, get) => ({
     try {
       const playerId = getClientPlayerId();
       const data = await readResponse<OnlineJoinResponse>(
-        await fetch(`/api/rooms/${encodeURIComponent(normalized)}`, {
+        await fetch(onlineApiUrl(`/api/rooms/${encodeURIComponent(normalized)}`), {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ playerId, action: "join" }),
@@ -254,9 +255,11 @@ export const useGameStore = create<GameStore>((set, get) => ({
     try {
       const data = await readResponse<OnlineActionResponse>(
         await fetch(
-          `/api/rooms/${encodeURIComponent(online.roomId)}?playerId=${encodeURIComponent(
-            online.playerId,
-          )}`,
+          onlineApiUrl(
+            `/api/rooms/${encodeURIComponent(online.roomId)}?playerId=${encodeURIComponent(
+              online.playerId,
+            )}`,
+          ),
           { cache: "no-store" },
         ),
       );
@@ -307,7 +310,7 @@ export const useGameStore = create<GameStore>((set, get) => ({
         return;
       }
 
-      void fetch(`/api/rooms/${encodeURIComponent(online.roomId)}`, {
+      void fetch(onlineApiUrl(`/api/rooms/${encodeURIComponent(online.roomId)}`), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ playerId: online.playerId, action: "roll" }),
@@ -373,7 +376,7 @@ export const useGameStore = create<GameStore>((set, get) => ({
         return;
       }
 
-      void fetch(`/api/rooms/${encodeURIComponent(online.roomId)}`, {
+      void fetch(onlineApiUrl(`/api/rooms/${encodeURIComponent(online.roomId)}`), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

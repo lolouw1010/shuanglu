@@ -26,7 +26,12 @@ function TokenTrack({
   return (
     <div className="character-track">
       <div className="character-track-heading">
-        <span>{label}</span>
+        <span className="character-track-label">
+          <span className="character-track-label-full">{label}</span>
+          <span className="character-track-label-short" aria-hidden="true">
+            {label === "已出马" ? "出" : "栏"}
+          </span>
+        </span>
         <strong>{count}/{total}</strong>
       </div>
       <div className="character-track-slots" aria-label={`${label} ${count} 枚`}>

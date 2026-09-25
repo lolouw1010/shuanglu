@@ -1218,7 +1218,7 @@ button:focus-visible {
     radial-gradient(circle at 86% 6%, rgba(90, 111, 70, 0.1), transparent 24%),
     url("/assets/backgrounds/song-study-court-bg.png") center 8% / cover no-repeat;
   color: var(--ink);
-  min-height: 100vh;
+  min-height: 100dvh;
   position: relative;
 }
 
@@ -1354,9 +1354,12 @@ button:focus-visible {
 .parchment-play-area {
   align-self: stretch;
   align-content: start;
-  grid-area: play;
   min-width: 0;
   position: relative;
+}
+
+.parchment-game-layout .parchment-play-area {
+  grid-area: play;
 }
 
 .parchment-play-area > * {
@@ -1551,6 +1554,10 @@ button:focus-visible {
   font-size: 0.72rem;
   line-height: 1.2;
   margin-top: 0.34rem;
+}
+
+.character-track-label-short {
+  display: none;
 }
 
 .character-portrait {
@@ -2443,24 +2450,630 @@ button:focus-visible {
 }
 
 @media (max-width: 900px) {
+  .menu-mobile-shell {
+    padding:
+      max(0.75rem, env(safe-area-inset-top))
+      max(0.75rem, env(safe-area-inset-right))
+      max(0.75rem, env(safe-area-inset-bottom))
+      max(0.75rem, env(safe-area-inset-left));
+  }
+
+  .menu-mobile-panel {
+    min-height: calc(100dvh - max(1.5rem, env(safe-area-inset-top) + env(safe-area-inset-bottom)));
+    padding: 1.1rem;
+  }
+
+  .menu-intro {
+    padding-top: clamp(1.5rem, 8dvh, 4rem);
+  }
+
+  .menu-intro h1 {
+    font-size: clamp(3.6rem, 19vw, 5.2rem);
+    line-height: 0.92;
+  }
+
+  .menu-intro p:last-child {
+    font-size: 1rem;
+    line-height: 1.7;
+    max-width: 31rem;
+  }
+
+  .menu-actions {
+    padding-bottom: 0;
+  }
+
+  .menu-mode-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .menu-mode-grid > button {
+    min-height: 3rem;
+    padding-inline: 0.65rem;
+    touch-action: manipulation;
+  }
+
+  .menu-mode-grid > button:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .menu-join-panel input,
+  .menu-join-panel button {
+    min-height: 2.75rem;
+  }
+
+  .parchment-game-shell {
+    padding:
+      max(0.25rem, env(safe-area-inset-top))
+      max(0.25rem, env(safe-area-inset-right))
+      calc(3.85rem + max(0.25rem, env(safe-area-inset-bottom)))
+      max(0.25rem, env(safe-area-inset-left));
+  }
+
+  .parchment-game-layout {
+    grid-template-areas:
+      "topbar topbar"
+      "play play"
+      "left right"
+      "footer footer";
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.32rem;
+  }
+
   .parchment-game-shell .parchment-topbar {
-    align-items: flex-start;
-    flex-wrap: wrap;
+    align-items: center;
+    background:
+      linear-gradient(180deg, rgba(250, 232, 193, 0.96), rgba(221, 184, 121, 0.94)),
+      radial-gradient(circle at 20% 0%, rgba(141, 46, 30, 0.12), transparent 48%);
+    height: auto;
+    min-height: 3.35rem;
+    overflow: visible;
+    padding: 0.35rem 0.55rem;
+  }
+
+  .parchment-game-shell .parchment-topbar > * {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .parchment-game-shell .brand-title {
+    font-size: 1.75rem;
+    line-height: 1;
+  }
+
+  .parchment-game-shell .brand-subtitle {
+    display: none;
+  }
+
+  .parchment-game-shell .brand-block > p {
+    font-size: 0.64rem;
+    max-width: 11rem;
   }
 
   .topbar-actions {
-    flex-wrap: wrap;
+    gap: 0.12rem;
   }
 
   .topbar-icon-button {
-    min-width: 2.8rem;
+    border-radius: 0.25rem;
+    min-height: 2.65rem;
+    min-width: 2.65rem;
+    padding: 0.2rem;
+    touch-action: manipulation;
+  }
+
+  .topbar-icon-button span {
+    font-size: 0.62rem;
+  }
+
+  .topbar-secondary-action {
+    display: none;
+  }
+
+  .parchment-round-strip {
+    display: grid;
+    gap: 0.3rem;
+    grid-template-columns: minmax(0, 1fr) auto;
+    min-height: 3.25rem;
+  }
+
+  .round-status-plaque {
+    font-size: clamp(0.82rem, 3.6vw, 1rem);
+    min-width: 0;
+    width: 100%;
+  }
+
+  .round-status-plaque span {
+    padding: 0.5rem 0.15rem 0.48rem 0.55rem;
+  }
+
+  .round-status-plaque strong {
+    padding: 0.5rem 0.55rem 0.48rem 0.35rem;
+  }
+
+  .parchment-game-shell .dice-tray {
+    gap: 0.2rem;
+  }
+
+  .parchment-game-shell .dice-result-row {
+    gap: 0.18rem;
+  }
+
+  .parchment-game-shell .dice-stage,
+  .parchment-game-shell .die-body {
+    height: clamp(2rem, 9.2vw, 2.35rem);
+    width: clamp(2rem, 9.2vw, 2.35rem);
+  }
+
+  .parchment-game-shell .dice-tray button {
+    min-height: 2.5rem;
+    padding: 0.3rem 0.42rem;
   }
 
   .parchment-game-shell .board-scroll {
-    overflow-x: auto;
+    overflow: visible;
   }
 
   .parchment-game-shell .board-stage {
-    min-width: 760px;
+    min-width: 0;
+    width: 100%;
+  }
+
+  .parchment-game-shell .board-scene {
+    padding: 0.2rem;
+  }
+
+  .parchment-game-shell .board-caption {
+    font-size: 0.58rem;
+    gap: 0.15rem;
+  }
+
+  .parchment-game-shell .board-inscription {
+    overflow: hidden;
+    padding: 0.18rem 0.3rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .parchment-game-shell .board-shell {
+    border-width: 0.25rem;
+    padding: 0.12rem;
+  }
+
+  .parchment-game-shell .board-shell::before,
+  .parchment-game-shell .board-shell::after {
+    inset: 0.12rem;
+  }
+
+  .parchment-game-shell .point-surface {
+    min-height: clamp(6.15rem, 28vw, 7.2rem);
+  }
+
+  .parchment-game-shell .point-surface > .absolute.left-2 {
+    font-size: 0.62rem;
+  }
+
+  .parchment-game-shell .piece-rack {
+    gap: 0.04rem;
+    grid-auto-rows: 0.72rem;
+    grid-template-columns: 0.72rem;
+    padding-inline: 0;
+  }
+
+  .parchment-game-shell .piece-rack-top {
+    top: 1.05rem;
+  }
+
+  .parchment-game-shell .piece-rack-bottom {
+    bottom: 1.05rem;
+  }
+
+  .parchment-game-shell .horse-piece {
+    height: 0.72rem;
+    width: 0.72rem;
+  }
+
+  .parchment-game-shell .horse-piece::after {
+    font-size: 0.5rem;
+  }
+
+  .parchment-game-shell .horse-piece .piece-count-sign {
+    font-size: 0.48rem;
+    min-width: 1rem;
+    padding: 0.1rem 0.18rem;
+    right: -0.52rem;
+  }
+
+  .parchment-game-shell .point-action-chip {
+    font-size: 0.58rem;
+    gap: 0.12rem;
+    padding: 0.22rem 0.24rem;
+  }
+
+  .parchment-game-shell .point-action-chip > span:first-child {
+    display: none;
+  }
+
+  .parchment-game-shell .point-step-chip {
+    background: rgba(255, 248, 225, 0.86);
+    font-size: 0.62rem;
+    min-width: 1.25rem;
+    padding: 0.2rem;
+  }
+
+  .parchment-game-shell .point-source-beacon,
+  .parchment-game-shell .point-target-beacon {
+    height: 1.65rem;
+    width: 1.65rem;
+  }
+
+  .parchment-game-shell .board-middle {
+    grid-template-columns: minmax(0, 1fr) 3px minmax(0, 1fr);
+    min-height: 2.2rem;
+  }
+
+  .parchment-game-shell .board-well {
+    min-height: 2.2rem;
+    padding: 0.18rem;
+  }
+
+  .parchment-game-shell .board-well-count {
+    font-size: 0.7rem;
+  }
+
+  .parchment-game-shell .parchment-room-strip {
+    align-items: flex-start;
+    flex-direction: column;
+    font-size: 0.7rem;
+    gap: 0.12rem;
+    padding: 0.42rem 0.55rem;
+  }
+
+  .parchment-game-shell .parchment-play-area > .parchment-command-panel {
+    background-size: cover;
+    grid-template-columns: minmax(0, 1fr) minmax(5.2rem, 0.36fr);
+  }
+
+  .parchment-command-panel > * {
+    min-height: 0;
+    padding: 0.55rem 0.6rem;
+  }
+
+  .parchment-dialogue {
+    display: none;
+  }
+
+  .parchment-hint-card {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+
+  .parchment-source-card,
+  .parchment-step-card {
+    grid-row: 2;
+  }
+
+  .parchment-command-panel h2 {
+    font-size: 0.82rem;
+  }
+
+  .parchment-source-token {
+    min-height: 2.75rem;
+    min-width: 2.25rem;
+  }
+
+  .parchment-source-token > span {
+    height: 2rem;
+    width: 2rem;
+  }
+
+  .parchment-hint-card p {
+    font-size: 0.76rem;
+    line-height: 1.45;
+    max-width: none;
+    text-align: center;
+  }
+
+  .character-scroll-panel {
+    background: rgba(245, 222, 177, 0.78);
+    border: 1px solid rgba(84, 54, 26, 0.16);
+    border-radius: 0.2rem;
+    min-height: 0;
+    padding: 0.55rem;
+  }
+
+  .character-portrait,
+  .character-quote,
+  .character-skill-box {
+    display: none;
+  }
+
+  .character-scroll-heading {
+    order: 1;
+    padding: 0;
+  }
+
+  .character-scroll-heading p {
+    font-size: 0.66rem;
+  }
+
+  .character-scroll-heading h2 {
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    color: #35210f;
+    font-size: 1rem;
+    padding: 0;
+  }
+
+  .character-scroll-heading span {
+    display: none;
+  }
+
+  .character-token-box {
+    gap: 0.22rem;
+    margin-top: 0.35rem;
+    order: 2;
+  }
+
+  .character-track {
+    background: rgba(255, 247, 225, 0.3);
+    margin-top: 0;
+    padding: 0.28rem 0.35rem;
+  }
+
+  .character-track-heading {
+    margin-bottom: 0;
+  }
+
+  .character-track-slots {
+    display: none;
+  }
+
+  .parchment-footer-nav {
+    bottom: 0;
+    left: max(0.25rem, env(safe-area-inset-left));
+    min-height: 3.35rem;
+    padding-bottom: env(safe-area-inset-bottom);
+    position: fixed;
+    right: max(0.25rem, env(safe-area-inset-right));
+    z-index: 30;
+  }
+
+  .parchment-footer-nav button {
+    flex-direction: column;
+    font-size: 0.68rem;
+    gap: 0.12rem;
+    min-height: 3.35rem;
+    padding: 0.3rem 0.15rem;
+    touch-action: manipulation;
+  }
+
+  .parchment-footer-nav button svg {
+    height: 1.2rem;
+    width: 1.2rem;
+  }
+
+  .game-3d-shell,
+  .game-3d-canvas {
+    min-height: min(31rem, 62dvh);
+    height: min(31rem, 62dvh);
+    max-width: 100%;
+    min-width: 0;
+    width: 100%;
+  }
+
+  .parchment-play-area > *,
+  .game-compact-hud > * {
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .rules-panel-backdrop {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .rules-panel-sheet {
+    border-bottom: 0;
+    border-left: 0;
+    border-radius: 0.75rem 0.75rem 0 0;
+    border-right: 0;
+    max-height: calc(100dvh - max(0.5rem, env(safe-area-inset-top)));
+    padding:
+      1rem
+      max(1rem, env(safe-area-inset-right))
+      max(1.25rem, env(safe-area-inset-bottom))
+      max(1rem, env(safe-area-inset-left));
+  }
+
+  .rules-panel-header {
+    background: #1c1010;
+    margin-inline: -0.1rem;
+    padding-block: 0.15rem 0.75rem;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+  }
+
+  .rules-panel-header button {
+    align-items: center;
+    display: inline-flex;
+    flex: 0 0 2.75rem;
+    height: 2.75rem;
+    justify-content: center;
+    width: 2.75rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .parchment-game-layout {
+    grid-template-areas:
+      "topbar topbar"
+      "left right"
+      "play play"
+      "footer footer";
+  }
+
+  .parchment-side-panel {
+    min-width: 0;
+  }
+
+  .character-scroll-panel {
+    display: grid;
+    gap: 0 0.35rem;
+    grid-template-columns: 3rem minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    min-height: 4.65rem;
+    overflow: hidden;
+    padding: 0.38rem 0.4rem;
+  }
+
+  .character-portrait {
+    align-self: stretch;
+    background-position: center top;
+    background-size: auto 5.4rem;
+    display: block;
+    grid-column: 1;
+    grid-row: 1 / 3;
+    height: auto;
+    margin: -0.35rem -0.15rem -0.4rem;
+    min-height: 4.5rem;
+  }
+
+  .character-portrait-white,
+  .character-portrait-black {
+    background-size: auto 5.4rem;
+  }
+
+  .character-scroll-heading {
+    align-self: end;
+    grid-column: 2;
+    grid-row: 1;
+    min-width: 0;
+    text-align: left;
+  }
+
+  .character-scroll-heading p {
+    font-size: 0.58rem;
+    margin-bottom: 0.1rem;
+  }
+
+  .character-scroll-heading h2 {
+    font-size: clamp(0.82rem, 4vw, 1rem);
+    line-height: 1.05;
+    overflow: hidden;
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .character-token-box {
+    align-self: start;
+    display: flex;
+    gap: 0.18rem;
+    grid-column: 2;
+    grid-row: 2;
+    margin-top: 0.22rem;
+    min-width: 0;
+  }
+
+  .character-track {
+    flex: 1;
+    min-width: 0;
+    padding: 0.2rem 0.24rem;
+  }
+
+  .character-track-heading {
+    font-size: 0.56rem;
+    gap: 0.12rem;
+  }
+
+  .character-track-label-full {
+    display: none;
+  }
+
+  .character-track-label-short {
+    display: inline;
+    font-size: 0.58rem;
+    white-space: nowrap;
+  }
+
+  .parchment-game-shell .board-caption,
+  .parchment-game-shell .board-action-guide,
+  .parchment-game-shell .ai-turn-board-note {
+    display: none;
+  }
+
+  .parchment-game-shell .board-scene {
+    padding: 0.12rem;
+  }
+
+  .parchment-game-shell .board-perspective {
+    --mobile-board-short: calc(100vw - 0.95rem);
+    --mobile-board-long: min(34rem, calc(var(--mobile-board-short) * 1.48));
+    height: var(--mobile-board-long);
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+  }
+
+  .parchment-game-shell .board-shell {
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) auto minmax(0, 1fr);
+    height: var(--mobile-board-short);
+    left: 50%;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(90deg);
+    transform-origin: center;
+    width: var(--mobile-board-long);
+  }
+
+  .parchment-game-shell .board-rank {
+    min-height: 0;
+  }
+
+  .parchment-game-shell .point-surface {
+    height: 100%;
+    min-height: 0;
+  }
+
+  .parchment-game-shell .piece-rack {
+    gap: 0.08rem;
+    grid-auto-rows: clamp(1.05rem, 4.4vw, 1.2rem);
+    grid-template-columns: repeat(2, clamp(1.05rem, 4.4vw, 1.2rem));
+  }
+
+  .parchment-game-shell .horse-piece {
+    height: clamp(1.05rem, 4.4vw, 1.2rem);
+    width: clamp(1.05rem, 4.4vw, 1.2rem);
+  }
+
+  .parchment-game-shell .horse-piece::after,
+  .parchment-game-shell .point-surface > .absolute.left-2,
+  .parchment-game-shell .piece-count-sign,
+  .parchment-game-shell .point-action-chip,
+  .parchment-game-shell .point-step-chip,
+  .parchment-game-shell .board-well > span {
+    transform: rotate(-90deg);
+  }
+
+  .parchment-game-shell .point-surface > .absolute.left-2 {
+    left: 50%;
+    transform: translateX(-50%) rotate(-90deg);
+  }
+
+  .parchment-game-shell .piece-count-sign {
+    right: -0.7rem;
+  }
+
+  .parchment-game-shell .board-middle {
+    min-height: 2rem;
+  }
+
+  .parchment-game-shell .board-well-count {
+    font-size: 0.7rem;
+    white-space: nowrap;
   }
 }

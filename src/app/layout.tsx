@@ -4,6 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "双陆 Shuanglu",
   description: "A playable Shuanglu web prototype.",
+  icons: { icon: "/favicon.svg" },
 };
 
 export default function RootLayout({

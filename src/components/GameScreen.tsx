@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 import { useEffect } from "react";
 import { characters } from "@/data/characters";
 import { generateLegalMoves, getVictoryType, getWinner } from "@/game";
+import { roomShareUrl } from "@/online/runtimeConfig";
 import { useGameStore } from "@/store/gameStore";
 import { Board } from "./Board";
 import { CharacterPanel } from "./CharacterPanel";
@@ -22,7 +23,7 @@ const GameTable3D = dynamic(
     ssr: false,
     loading: () => (
       <section className="game-3d-shell">
-        <div className="flex min-h-[520px] items-center justify-center text-sm text-amber-100/75">
+        <div className="flex min-h-[min(520px,62dvh)] items-center justify-center text-sm text-amber-100/75">
           正在布置三维棋局...
         </div>
       </section>
@@ -53,9 +54,7 @@ export function GameScreen() {
   const winner = getWinner(state);
   const victoryType = getVictoryType(state);
   const onlineShareUrl =
-    typeof window !== "undefined" && online
-      ? `${window.location.origin}/?room=${online.roomId}`
-      : "";
+    online ? roomShareUrl(online.roomId) : "";
   const canAct =
     mode !== "online" ||
     (online?.seat !== "spectator" && online?.seat === state.currentPlayer);
@@ -89,8 +88,8 @@ export function GameScreen() {
 
   const shellClass =
     boardView === "3d"
-      ? "min-h-screen overflow-x-hidden px-2 py-2 text-stone-100 sm:px-3 bg-[radial-gradient(circle_at_50%_0%,rgba(214,162,80,.16),transparent_28%),linear-gradient(140deg,#120d0c,#351317_48%,#15100e)]"
-      : "parchment-game-shell min-h-screen overflow-x-hidden px-2 py-2 text-[#3b2514] sm:px-3";
+      ? "min-h-[100dvh] overflow-x-hidden px-2 py-2 text-stone-100 sm:px-3 bg-[radial-gradient(circle_at_50%_0%,rgba(214,162,80,.16),transparent_28%),linear-gradient(140deg,#120d0c,#351317_48%,#15100e)]"
+      : "parchment-game-shell min-h-[100dvh] overflow-x-hidden px-2 py-2 text-[#3b2514] sm:px-3";
   const layoutClass =
     boardView === "3d"
       ? "relative z-10 mx-auto grid max-w-[1500px] gap-2 xl:grid-cols-[220px_1fr_220px]"
@@ -123,19 +122,19 @@ export function GameScreen() {
             <p className="mt-1 text-sm">与对手对坐，一局雅弈</p>
           </div>
           <div className="topbar-actions flex shrink-0 gap-2">
-            <button type="button" aria-label="博戏志" className="topbar-icon-button" onClick={toggleRules}>
+            <button type="button" aria-label="博戏志" className="topbar-icon-button topbar-primary-action" onClick={toggleRules}>
               <BookOpen size={22} />
               <span>博戏志</span>
             </button>
-            <button type="button" aria-label="棋局记录" className="topbar-icon-button" onClick={toggleRules}>
+            <button type="button" aria-label="棋局记录" className="topbar-icon-button topbar-secondary-action" onClick={toggleRules}>
               <ScrollText size={22} />
               <span>棋局记录</span>
             </button>
-            <button type="button" aria-label="设置" className="topbar-icon-button" onClick={toggleRules}>
+            <button type="button" aria-label="设置" className="topbar-icon-button topbar-secondary-action" onClick={toggleRules}>
               <Settings size={22} />
               <span>设置</span>
             </button>
-            <button type="button" aria-label="返回" className="topbar-icon-button" onClick={backToMenu}>
+            <button type="button" aria-label="返回" className="topbar-icon-button topbar-primary-action" onClick={backToMenu}>
               <ArrowLeft size={22} />
               <span>返回</span>
             </button>

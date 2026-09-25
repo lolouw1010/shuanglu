@@ -8,9 +8,9 @@ type RulesPanelProps = {
 
 export function RulesPanel({ onClose }: RulesPanelProps) {
   return (
-    <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/55 p-4">
-      <section className="max-h-[86vh] w-full max-w-2xl overflow-auto rounded border border-amber-200/30 bg-[#1c1010] p-6 text-stone-100 shadow-lacquer">
-        <div className="mb-5 flex items-start justify-between gap-4">
+    <div className="rules-panel-backdrop fixed inset-0 z-40 flex items-center justify-center bg-black/55 p-4">
+      <section className="rules-panel-sheet max-h-[86dvh] w-full max-w-2xl overflow-auto rounded border border-amber-200/30 bg-[#1c1010] p-6 text-stone-100 shadow-lacquer">
+        <div className="rules-panel-header mb-5 flex items-start justify-between gap-4">
           <div>
             <h2 className="font-display text-2xl text-amber-100">博戏志</h2>
             <p className="mt-1 text-sm text-stone-300">

@@ -11,7 +11,10 @@
     "start": "next start",
     "typecheck": "tsc --noEmit --incremental false",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "mobile:build": "npm --prefix mobile run build",
+    "mobile:sync": "npm --prefix mobile run native:sync",
+    "mobile:preview": "npm --prefix mobile run preview"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.7",

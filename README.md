@@ -50,6 +50,17 @@ npm run build
 npm run dev
 ```
 
+## Mobile App
+
+The Capacitor 8 mobile workspace lives in `mobile/` and requires Node.js 22. It shares the existing game and UI source while keeping its dependencies separate from the Node.js 20 production server.
+
+```bash
+npm run mobile:build
+npm run mobile:sync
+```
+
+See `mobile/README.md` for native requirements, architecture, and platform commands.
+
 Local runtime policy for the current MiniMac workflow: do not start a local web service unless explicitly requested. Use cloud deployment for runtime checks.
 
 Node.js 20 is the supported development and production major version. Run `nvm use` before installing dependencies.
