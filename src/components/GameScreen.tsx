@@ -103,7 +103,7 @@ export function GameScreen() {
             <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
               <h1 className="brand-title font-display text-3xl sm:text-5xl">双陆</h1>
               <span className="brand-subtitle text-sm font-semibold">唐宋博戏</span>
-              {boardView === "3d" ? <span className="text-xs text-amber-100/80">3D 测试局</span> : null}
+              {boardView === "3d" ? <span className="text-xs text-amber-100/80">斜俯棋局</span> : null}
             </div>
             {mode === "online" && online ? (
               <p className="mt-0.5 truncate text-xs">
@@ -154,7 +154,9 @@ export function GameScreen() {
         <div className="parchment-play-area order-2 grid gap-2 xl:order-none">
           {boardView === "3d" ? (
             <div className="game-compact-hud grid gap-2 lg:grid-cols-[minmax(0,1fr)_minmax(230px,270px)]">
-              <VictoryTracker state={state} />
+              <div className="game-3d-victory">
+                <VictoryTracker state={state} />
+              </div>
               <DicePanel
                 state={state}
                 onRoll={() => rollCurrentPlayer()}

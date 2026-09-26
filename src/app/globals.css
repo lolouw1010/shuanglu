@@ -367,22 +367,22 @@ button:focus-visible {
 
 .game-3d-shell {
   background:
-    radial-gradient(circle at 50% 0%, rgba(245, 184, 89, 0.18), transparent 36%),
-    linear-gradient(145deg, rgba(8, 6, 5, 0.94), rgba(45, 14, 12, 0.92) 54%, rgba(6, 5, 5, 0.96));
-  border: 1px solid rgba(253, 230, 138, 0.16);
-  border-radius: 8px;
+    radial-gradient(circle at 30% 0%, rgba(225, 183, 111, 0.14), transparent 36%),
+    linear-gradient(145deg, #2b1c16, #1d1310 62%, #160f0d);
+  border: 1px solid rgba(218, 178, 106, 0.24);
+  border-radius: 12px;
   box-shadow:
     0 1.6rem 4.4rem rgba(0, 0, 0, 0.48),
     inset 0 1px 0 rgba(255, 244, 204, 0.08);
-  min-height: clamp(520px, 66vh, 780px);
+  min-height: clamp(500px, 64vh, 720px);
   overflow: hidden;
   position: relative;
 }
 
 .game-3d-shell::after {
   background:
-    linear-gradient(90deg, rgba(255, 255, 255, 0.09), transparent 16%, transparent 84%, rgba(255, 255, 255, 0.05)),
-    radial-gradient(circle at 50% 12%, rgba(255, 236, 179, 0.1), transparent 30%);
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045), transparent 16%, transparent 84%, rgba(255, 255, 255, 0.025)),
+    radial-gradient(circle at 34% 8%, rgba(255, 231, 184, 0.07), transparent 32%);
   content: "";
   inset: 0;
   pointer-events: none;
@@ -391,7 +391,7 @@ button:focus-visible {
 
 .game-3d-badge {
   align-items: center;
-  background: linear-gradient(135deg, rgba(10, 6, 5, 0.72), rgba(80, 48, 20, 0.52));
+  background: rgba(29, 18, 13, 0.82);
   border: 1px solid rgba(245, 210, 137, 0.22);
   border-radius: 8px;
   color: rgba(255, 244, 216, 0.86);
@@ -417,7 +417,7 @@ button:focus-visible {
 }
 
 .game-3d-canvas {
-  height: clamp(520px, 66vh, 780px);
+  height: clamp(500px, 64vh, 720px);
   position: relative;
   width: 100%;
 }
@@ -2911,11 +2911,15 @@ button:focus-visible {
 
   .game-3d-shell,
   .game-3d-canvas {
-    min-height: min(31rem, 62dvh);
-    height: min(31rem, 62dvh);
+    min-height: min(25rem, 46dvh);
+    height: min(25rem, 46dvh);
     max-width: 100%;
     min-width: 0;
     width: 100%;
+  }
+
+  .game-3d-victory {
+    display: none;
   }
 
   .parchment-play-area > *,

@@ -3856,6 +3856,38 @@ Certificate staging renewal passed for shuanglu.uway.click.
 
 The first directory-migration attempt performed an immediate HTTP check after `systemctl restart` and correctly rolled back when Next.js had not finished starting. The readiness check was changed to retry for up to 30 seconds, after which the migration completed successfully.
 
+## 2026-09-27 Fixed-Angle 2.5D Board Redesign
+
+### Objective
+
+Replace the visually inconsistent rotatable `/3d` greybox with a coherent, fixed-angle tabletop composition that remains legible in mobile portrait view.
+
+### Design Direction
+
+- Reviewed current production at 430x932 and confirmed that perspective cropping, oversized foreground pieces, in-board dice, and mixed HUD styles were the main visual problems.
+- Used premium digital backgammon and fixed-camera tabletop layouts as composition references without copying their art assets.
+- Selected the existing `3d-scholars-study.png` concept as the internal tone target: complete board, restrained study setting, and a readable oblique view.
+
+### Implementation
+
+- Replaced orbit controls and the perspective camera with a responsive orthographic camera that fits the whole board to the canvas.
+- Removed wall scenery, decorative props, in-board dice, and thirteen lane bars.
+- Rebuilt the surface with alternating cinnabar and ivory points, a walnut frame, a central rail, and side trays.
+- Shortened the lathed horse profile, increased its screen presence, and laid stacks along each point rather than vertically into the camera.
+- Changed the `/3d` label from a test scene to `斜俯棋局`, and changed the scene badge to `宋韵棋案 · 固定视角`.
+- Hid the large victory tracker on mobile while retaining the dice action and turn guidance.
+
+### Browser QA
+
+```txt
+430x932 initial state: complete board in frame; no cropped foreground pieces.
+430x932 rolled state: actionable source points visible.
+430x932 selected state: legal target point rendered in green.
+1280x900 desktop state: full board and both character panels visible.
+Browser console: zero errors; existing Three.js deprecation warnings remain.
+Desktop horizontal overflow: none (clientWidth 1280, scrollWidth 1280).
+```
+
 ## 2026-09-26 Mobile Contrast and Piece-Conservation Pass
 
 ### Scope

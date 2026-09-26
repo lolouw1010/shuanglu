@@ -22,6 +22,16 @@ The current priority is a stable playable baseline and clear handoff documentati
 - Browser QA covered 390x844 and 430x932 portrait viewports plus the 3D WebGL scene. The 3D scene produced no console errors; Three r184 emitted existing deprecation warnings for `Clock` and `PCFSoftShadowMap`.
 - Web production build, TypeScript validation, and the isolated Capacitor/Vite mobile build pass.
 
+## 2026-09-27 Fixed-Angle Board Redesign
+
+- Replaced the rotatable perspective `/3d` greybox with a fixed orthographic 2.5D board composition.
+- The full lacquer board now stays in frame at mobile portrait and desktop widths instead of stretching into a cropped runway.
+- Removed the in-board dice blocks, room walls, lane bars, camera controls, and other scenery that competed with play.
+- Rebuilt the play surface around alternating cinnabar and ivory points, a quieter walnut table, a clear center rail, and compact side trays.
+- Shortened and enlarged the horse pieces so they read as playable counters instead of tall foreground vases.
+- Mobile `/3d` now hides the oversized victory tracker, keeps the dice action compact, and reserves the primary viewport for the board.
+- Source and target feedback remains on the play surface and was browser-checked after rolling and selecting a horse.
+
 ## Production Baseline
 
 Current production:
