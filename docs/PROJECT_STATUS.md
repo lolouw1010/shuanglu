@@ -1,6 +1,6 @@
 # Project Status
 
-Last updated: 2026-07-06 CST
+Last updated: 2026-09-26 CST
 
 ## Current Target
 
@@ -9,6 +9,18 @@ Version target: `0.5`
 Goal: maintain a playable cloud-hosted 0.5 prototype while documenting the current system clearly enough for continued development.
 
 The current priority is a stable playable baseline and clear handoff documentation, not commercial completeness.
+
+## 2026-09-26 Mobile Readability and State Integrity Update
+
+- Mobile source and target markers now use shape, text, color, and a dark backing together instead of relying on gold/green color alone.
+- The 3D table now gives actionable points a dark perimeter and uses hollow source rings versus filled target discs.
+- White and black horses retain their body colors while gaining opposite-luminance edge treatment for light and dark board surfaces.
+- Added pure board-state invariant checks for point structure, non-negative integer counters, and per-player horse totals.
+- Move application now asserts that each player's horse count is conserved across normal moves, hits, bar entry, and bearing off.
+- Added eight invariant tests; the suite now passes 46 tests across 11 files.
+- UI horse-count copy and character counters now read `ruleConfig.horsesPerPlayer` instead of repeating the MVP value.
+- Browser QA covered 390x844 and 430x932 portrait viewports plus the 3D WebGL scene. The 3D scene produced no console errors; Three r184 emitted existing deprecation warnings for `Clock` and `PCFSoftShadowMap`.
+- Web production build, TypeScript validation, and the isolated Capacitor/Vite mobile build pass.
 
 ## Production Baseline
 

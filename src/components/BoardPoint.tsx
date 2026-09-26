@@ -190,7 +190,11 @@ export function BoardPoint({
             row === "top" ? "bottom-2" : "top-2"
           }`}
         >
-          <span>落马</span>
+          <span className="point-action-symbol" aria-hidden="true" />
+          <span className="point-action-label">
+            <span className="point-action-label-full">落马</span>
+            <span className="point-action-label-short" aria-hidden="true">落</span>
+          </span>
           {targetStepLabel ? <span className="point-step-chip">{targetStepLabel}</span> : null}
         </span>
       ) : canSelect ? (
@@ -199,7 +203,11 @@ export function BoardPoint({
             row === "top" ? "bottom-2" : "top-2"
           }`}
         >
-          <span>点取</span>
+          <span className="point-action-symbol" aria-hidden="true" />
+          <span className="point-action-label">
+            <span className="point-action-label-full">点取</span>
+            <span className="point-action-label-short" aria-hidden="true">取</span>
+          </span>
           {sourceStepLabel ? <span className="point-step-chip">{sourceStepLabel}</span> : null}
         </span>
       ) : null}

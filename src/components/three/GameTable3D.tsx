@@ -120,7 +120,7 @@ function VasePiece({
 
   const isWhite = owner === "white";
   const bodyColor = isWhite ? "#fff0c5" : "#030303";
-  const rimColor = isWhite ? "#f8dda1" : "#101010";
+  const rimColor = isWhite ? "#302317" : "#e7c574";
   const highlightColor = isWhite ? "#fff9e8" : "#e6ddd1";
 
   return (
@@ -194,6 +194,7 @@ function BoardPoint3D({
   );
   const baseColor = position.index % 2 === 0 ? "#c89a48" : "#6f4324";
   const activeColor = isTarget ? "#74d8a4" : isSource ? "#f4d16a" : canSelect ? "#d5b15d" : baseColor;
+  const isActionable = isTarget || isSource || canSelect;
 
   const handleClick = () => {
     if (isTarget) {
@@ -205,6 +206,16 @@ function BoardPoint3D({
 
   return (
     <group position={[position.x, 0.12, position.z]}>
+      {isActionable ? (
+        <mesh
+          position={[0, -0.008, 0]}
+          rotation={[-Math.PI / 2, 0, 0]}
+          scale={[1.12, 1.12, 1.12]}
+        >
+          <shapeGeometry args={[triangle]} />
+          <meshBasicMaterial color="#1c1815" side={DoubleSide} />
+        </mesh>
+      ) : null}
       <mesh
         receiveShadow
         rotation={[-Math.PI / 2, 0, 0]}
@@ -223,19 +234,33 @@ function BoardPoint3D({
           side={DoubleSide}
         />
       </mesh>
-      <mesh
-        position={[0, 0.018, position.direction * -POINT_LENGTH * 0.48]}
-        rotation={[-Math.PI / 2, 0, 0]}
-      >
-        <circleGeometry args={[0.055, 18]} />
-        <meshStandardMaterial
-          color={isTarget ? "#c9ffe2" : "#e2b35a"}
-          emissive={isTarget ? "#2f8f5e" : "#5c3508"}
-          emissiveIntensity={isTarget ? 0.45 : 0.18}
-          metalness={0.35}
-          roughness={0.25}
-        />
-      </mesh>
+      {isActionable ? (
+        <group position={[0, 0.018, position.direction * -POINT_LENGTH * 0.48]}>
+          <mesh rotation={[-Math.PI / 2, 0, 0]}>
+            {isTarget ? (
+              <circleGeometry args={[0.09, 24]} />
+            ) : (
+              <ringGeometry args={[0.045, 0.1, 24]} />
+            )}
+            <meshBasicMaterial color="#1c1815" side={DoubleSide} />
+          </mesh>
+          <mesh position={[0, 0.004, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+            {isTarget ? (
+              <circleGeometry args={[0.058, 24]} />
+            ) : (
+              <ringGeometry args={[0.06, 0.082, 24]} />
+            )}
+            <meshStandardMaterial
+              color={isTarget ? "#c9ffe2" : "#f4d16a"}
+              emissive={isTarget ? "#2f8f5e" : "#5c3508"}
+              emissiveIntensity={isTarget ? 0.45 : 0.24}
+              metalness={0.35}
+              roughness={0.25}
+              side={DoubleSide}
+            />
+          </mesh>
+        </group>
+      ) : null}
       {point.owner
         ? pieceOffsets(point.count).map(([x, y, depth], pieceIndex) => (
             <VasePiece

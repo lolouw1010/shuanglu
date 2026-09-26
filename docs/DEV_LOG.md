@@ -3855,3 +3855,32 @@ Certificate staging renewal passed for shuanglu.uway.click.
 ```
 
 The first directory-migration attempt performed an immediate HTTP check after `systemctl restart` and correctly rolled back when Next.js had not finished starting. The readiness check was changed to retry for up to 30 seconds, after which the migration completed successfully.
+
+## 2026-09-26 Mobile Contrast and Piece-Conservation Pass
+
+### Scope
+
+- Adapted the external contrast and invariant analysis to the current shared TypeScript engine and DOM/Three.js renderers.
+- Did not add the unapproved `pendingOffBoard` model, arbitrary board topology, font-atlas tooling, or WeChat mini-game support.
+
+### Implementation
+
+- Added compact source/target action markers that combine a short label, dice step, color, and distinct geometry.
+- Added dark backing and perimeter treatment so source/target markers remain separated from parchment and 3D board surfaces.
+- Strengthened white/black horse silhouette edges without changing the piece body palette.
+- Added `assertBoardStateStructure`, `assertBoardStateInvariant`, and `assertPieceDestinationConservation` in the pure game engine.
+- Wired move-transition conservation into `applyMove` and full-state validation into initial-state creation.
+- Added eight invariant regression tests, including six malformed destination/state cases.
+- Replaced duplicated runtime `15` copy with `ruleConfig.horsesPerPlayer` and reused `POINT_COUNT` in test helpers.
+
+### Verification
+
+```txt
+npm test -- --run: 11 test files, 46 tests passed.
+npm run typecheck: passed.
+npm run build: passed; five Next.js routes generated.
+npm run mobile:build: passed; Capacitor/Vite bundle generated.
+Portrait browser QA: 390x844 and 430x932 passed for 2D source/target states.
+3D browser QA: actionable source rings and piece edges rendered; zero console errors.
+Known 3D warnings: Three.Clock and PCFSoftShadowMap deprecations under Three r184.
+```

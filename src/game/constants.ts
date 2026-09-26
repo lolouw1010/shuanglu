@@ -7,7 +7,7 @@ export const DEFAULT_RULE_CONFIG: RuleConfig = {
   mode: "reconstruction",
   useDoublesAsFourSteps: true,
   enableCrushingWin: false,
-  horsesPerPlayer: 15,
+  horsesPerPlayer: HORSES_PER_PLAYER,
   enableCharacterSkills: false,
 };
 
@@ -15,7 +15,7 @@ export const CLASSICAL_RULE_CONFIG: RuleConfig = {
   mode: "classical",
   useDoublesAsFourSteps: false,
   enableCrushingWin: false,
-  horsesPerPlayer: 15,
+  horsesPerPlayer: HORSES_PER_PLAYER,
   enableCharacterSkills: false,
 };
 

@@ -147,6 +147,7 @@ export function GameScreen() {
             active={state.currentPlayer === "white"}
             barCount={state.bar.white}
             borneOff={state.borneOff.white}
+            total={state.ruleConfig.horsesPerPlayer}
           />
         </div>
 
@@ -261,6 +262,7 @@ export function GameScreen() {
             active={state.currentPlayer === "black"}
             barCount={state.bar.black}
             borneOff={state.borneOff.black}
+            total={state.ruleConfig.horsesPerPlayer}
           />
         </div>
 

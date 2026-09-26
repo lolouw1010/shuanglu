@@ -78,7 +78,7 @@ function messageForState(state: BoardState): string {
   const winner = getWinner(state);
   if (winner) return `${playerLabel(winner)}胜。`;
   if (state.turnPhase === "awaiting_roll") {
-    return `${playerLabel(state.currentPlayer)}请掷骰。目标是先出完 15 枚马。`;
+    return `${playerLabel(state.currentPlayer)}请掷骰。目标是先出完 ${state.ruleConfig.horsesPerPlayer} 枚马。`;
   }
   if (state.bar[state.currentPlayer] > 0) {
     return `尚有${playerLabel(state.currentPlayer)}马在栏：先点棋盘中部的“马栏/复马”按钮，再点绿色入口。`;

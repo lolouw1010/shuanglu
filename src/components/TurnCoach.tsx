@@ -32,7 +32,7 @@ function currentActionText(
   targetMoves: Move[],
 ): string {
   if (state.turnPhase === "game_over") {
-    return "本局结束。胜者是先把 15 枚马全部移出棋盘的一方。";
+    return `本局结束。胜者是先把 ${state.ruleConfig.horsesPerPlayer} 枚马全部移出棋盘的一方。`;
   }
 
   if (state.turnPhase === "awaiting_roll") {

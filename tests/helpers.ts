@@ -1,5 +1,6 @@
 import {
   createInitialState,
+  POINT_COUNT,
   type BoardState,
   type Player,
   type Point,
@@ -7,7 +8,7 @@ import {
 } from "@/game";
 
 export function emptyPoints(): Point[] {
-  return Array.from({ length: 24 }, () => ({ owner: null, count: 0 }));
+  return Array.from({ length: POINT_COUNT }, () => ({ owner: null, count: 0 }));
 }
 
 export function stateWithPoints(

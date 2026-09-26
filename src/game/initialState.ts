@@ -1,4 +1,9 @@
-import { DEFAULT_RULE_CONFIG, INITIAL_POINTS } from "./constants";
+import {
+  DEFAULT_RULE_CONFIG,
+  HORSES_PER_PLAYER,
+  INITIAL_POINTS,
+} from "./constants";
+import { assertBoardStateInvariant } from "./invariants";
 import type { BoardState, RuleConfig } from "./types";
 
 export function cloneState(state: BoardState): BoardState {
@@ -22,11 +27,13 @@ export function cloneState(state: BoardState): BoardState {
 export function createInitialState(
   config: RuleConfig = DEFAULT_RULE_CONFIG,
 ): BoardState {
-  if (config.horsesPerPlayer !== 15) {
-    throw new Error("Only 15-horse layouts are implemented in the MVP.");
+  if (config.horsesPerPlayer !== HORSES_PER_PLAYER) {
+    throw new Error(
+      `Only ${HORSES_PER_PLAYER}-horse layouts are implemented in the MVP.`,
+    );
   }
 
-  return {
+  const state: BoardState = {
     points: INITIAL_POINTS.map((point) => ({ ...point })),
     bar: { white: 0, black: 0 },
     borneOff: { white: 0, black: 0 },
@@ -37,4 +44,7 @@ export function createInitialState(
     turnPhase: "awaiting_roll",
     moveHistory: [],
   };
+
+  assertBoardStateInvariant(state);
+  return state;
 }

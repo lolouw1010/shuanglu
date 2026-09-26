@@ -73,7 +73,7 @@ export function VictoryTracker({ state }: VictoryTrackerProps) {
               Win
             </p>
             <h2 className="font-display text-base text-amber-50">
-              先出完 15 枚马
+              先出完 {state.ruleConfig.horsesPerPlayer} 枚马
             </h2>
           </div>
         </div>

@@ -5,6 +5,7 @@ type CharacterPanelProps = {
   active: boolean;
   barCount: number;
   borneOff: number;
+  total: number;
 };
 
 function sideLabel(player: Character["player"]): string {
@@ -14,7 +15,7 @@ function sideLabel(player: Character["player"]): string {
 function TokenTrack({
   label,
   count,
-  total = 15,
+  total,
 }: {
   label: string;
   count: number;
@@ -51,6 +52,7 @@ export function CharacterPanel({
   active,
   barCount,
   borneOff,
+  total,
 }: CharacterPanelProps) {
   return (
     <aside
@@ -79,8 +81,8 @@ export function CharacterPanel({
       </div>
 
       <div className="character-token-box">
-        <TokenTrack label="已出马" count={borneOff} />
-        <TokenTrack label="马栏" count={barCount} />
+        <TokenTrack label="已出马" count={borneOff} total={total} />
+        <TokenTrack label="马栏" count={barCount} total={total} />
       </div>
     </aside>
   );

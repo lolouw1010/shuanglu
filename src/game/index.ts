@@ -3,6 +3,7 @@ export * from "./applyMove";
 export * from "./constants";
 export * from "./dice";
 export * from "./initialState";
+export * from "./invariants";
 export * from "./legalMoves";
 export * from "./movement";
 export * from "./turn";

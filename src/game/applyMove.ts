@@ -1,4 +1,5 @@
 import { cloneState } from "./initialState";
+import { assertPieceDestinationConservation } from "./invariants";
 import { opponent } from "./movement";
 import { shouldEndTurn, endTurn } from "./turn";
 import { validateMove } from "./validateMove";
@@ -72,6 +73,8 @@ export function applyMove(state: BoardState, move: Move): BoardState {
     resultingBar: { ...next.bar },
     resultingBorneOff: { ...next.borneOff },
   });
+
+  assertPieceDestinationConservation(state, next);
 
   if (getWinner(next)) {
     next.turnPhase = "game_over";

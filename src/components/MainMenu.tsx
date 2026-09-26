@@ -2,6 +2,7 @@
 
 import { Box, BookOpen, Bot, Globe2, Users } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { DEFAULT_RULE_CONFIG } from "@/game";
 import { useGameStore } from "@/store/gameStore";
 
 export function MainMenu() {
@@ -31,7 +32,7 @@ export function MainMenu() {
             双陆
           </h1>
           <p className="mt-4 max-w-xl text-lg leading-8 text-stone-200">
-            掷骰行马，把 15 枚马先送出棋盘即胜。复原模式会提示每一步该点哪里。
+            掷骰行马，把 {DEFAULT_RULE_CONFIG.horsesPerPlayer} 枚马先送出棋盘即胜。复原模式会提示每一步该点哪里。
           </p>
         </div>
 
