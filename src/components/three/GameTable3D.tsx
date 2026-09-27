@@ -1,6 +1,7 @@
 "use client";
 
 import { Canvas, useThree } from "@react-three/fiber";
+import Image from "next/image";
 import { useLayoutEffect, useMemo } from "react";
 import { DoubleSide, LatheGeometry, OrthographicCamera, Shape, Vector2 } from "three";
 import type { BoardState, Move, Player, Point } from "@/game";
@@ -442,7 +443,7 @@ function FixedCamera() {
     if (!(camera instanceof OrthographicCamera)) return;
     camera.position.set(8.4, 9.8, 10.6);
     camera.lookAt(0, 0.45, 0);
-    camera.zoom = Math.min(size.width / 14.6, size.height / 9.4);
+    camera.zoom = Math.min(size.width / 17, size.height / 10.2);
     camera.updateProjectionMatrix();
   }, [camera, size.height, size.width]);
 
@@ -470,6 +471,8 @@ function Scene(props: GameTable3DProps) {
 }
 
 export function GameTable3D(props: GameTable3DProps) {
+  const total = props.state.ruleConfig.horsesPerPlayer;
+
   return (
     <section className="game-3d-shell" aria-label="固定视角双陆棋桌">
       <div className="game-3d-badge">
@@ -486,6 +489,34 @@ export function GameTable3D(props: GameTable3DProps) {
           <Scene {...props} />
         </Canvas>
       </div>
+      <figure className="game-3d-character game-3d-character-white">
+        <Image
+          src="/assets/characters/li-qingzhao-isometric.png"
+          alt="白方游局人斜俯对弈立绘"
+          width={512}
+          height={768}
+          sizes="(max-width: 600px) 24vw, 180px"
+        />
+        <figcaption>
+          <span>白方 · 你</span>
+          <strong>游局人</strong>
+          <small>出 {props.state.borneOff.white}/{total} · 栏 {props.state.bar.white}</small>
+        </figcaption>
+      </figure>
+      <figure className="game-3d-character game-3d-character-black">
+        <Image
+          src="/assets/characters/song-emperor-isometric.png"
+          alt="黑方宋徽宗斜俯对弈立绘"
+          width={512}
+          height={768}
+          sizes="(max-width: 600px) 21vw, 160px"
+        />
+        <figcaption>
+          <span>黑方 · 对手</span>
+          <strong>宋徽宗</strong>
+          <small>出 {props.state.borneOff.black}/{total} · 栏 {props.state.bar.black}</small>
+        </figcaption>
+      </figure>
     </section>
   );
 }

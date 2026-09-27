@@ -3888,6 +3888,16 @@ Browser console: zero errors; existing Three.js deprecation warnings remain.
 Desktop horizontal overflow: none (clientWidth 1280, scrollWidth 1280).
 ```
 
+### 2.5D Character Integration
+
+- Generated two new transparent three-quarter seated character assets from the existing white-player and Song Huizong portraits.
+- Kept the source portraits unchanged for the parchment 2D mode.
+- Placed the white player at the near-left edge and the black opponent at the far-right edge, with both poses and gazes directed toward the board.
+- Removed the duplicate side-scroll character panels from `/3d` and moved player identity, borne-off count, and bar count into compact scene nameplates.
+- Reduced the responsive orthographic zoom slightly to reserve negative space for the figures without obscuring playable points.
+- Downscaled the final assets from 1024x1536 to 512x768 and reduced their combined size from about 5.1 MB to about 412 KB while retaining alpha transparency.
+- Browser-checked the integrated scene at 430x932 and 1280x900 with zero console errors and no horizontal overflow.
+
 ## 2026-09-26 Mobile Contrast and Piece-Conservation Pass
 
 ### Scope

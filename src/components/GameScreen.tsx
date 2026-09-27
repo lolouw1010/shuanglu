@@ -92,13 +92,13 @@ export function GameScreen() {
       : "parchment-game-shell min-h-[100dvh] overflow-x-hidden px-2 py-2 text-[#3b2514] sm:px-3";
   const layoutClass =
     boardView === "3d"
-      ? "relative z-10 mx-auto grid max-w-[1500px] gap-2 xl:grid-cols-[220px_1fr_220px]"
+      ? "relative z-10 mx-auto grid max-w-[1180px] gap-2"
       : "parchment-game-layout relative z-10 mx-auto grid max-w-[1780px] gap-2";
 
   return (
     <main className={shellClass}>
       <div className={layoutClass}>
-        <div className="game-topbar parchment-topbar flex items-center justify-between gap-3 rounded border px-3 py-2 xl:col-span-3">
+        <div className={`game-topbar parchment-topbar flex items-center justify-between gap-3 rounded border px-3 py-2 ${boardView === "3d" ? "" : "xl:col-span-3"}`}>
           <div className="brand-block min-w-0">
             <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
               <h1 className="brand-title font-display text-3xl sm:text-5xl">双陆</h1>
@@ -141,15 +141,17 @@ export function GameScreen() {
           </div>
         </div>
 
-        <div className={`${boardView === "3d" ? "order-3 xl:order-none" : "parchment-side-panel parchment-side-left order-2"}`}>
-          <CharacterPanel
-            character={characters.white}
-            active={state.currentPlayer === "white"}
-            barCount={state.bar.white}
-            borneOff={state.borneOff.white}
-            total={state.ruleConfig.horsesPerPlayer}
-          />
-        </div>
+        {boardView === "3d" ? null : (
+          <div className="parchment-side-panel parchment-side-left order-2">
+            <CharacterPanel
+              character={characters.white}
+              active={state.currentPlayer === "white"}
+              barCount={state.bar.white}
+              borneOff={state.borneOff.white}
+              total={state.ruleConfig.horsesPerPlayer}
+            />
+          </div>
+        )}
 
         <div className="parchment-play-area order-2 grid gap-2 xl:order-none">
           {boardView === "3d" ? (
@@ -258,15 +260,17 @@ export function GameScreen() {
           ) : null}
         </div>
 
-        <div className={`${boardView === "3d" ? "order-4 xl:order-none" : "parchment-side-panel parchment-side-right order-3"}`}>
-          <CharacterPanel
-            character={characters.black}
-            active={state.currentPlayer === "black"}
-            barCount={state.bar.black}
-            borneOff={state.borneOff.black}
-            total={state.ruleConfig.horsesPerPlayer}
-          />
-        </div>
+        {boardView === "3d" ? null : (
+          <div className="parchment-side-panel parchment-side-right order-3">
+            <CharacterPanel
+              character={characters.black}
+              active={state.currentPlayer === "black"}
+              barCount={state.bar.black}
+              borneOff={state.borneOff.black}
+              total={state.ruleConfig.horsesPerPlayer}
+            />
+          </div>
+        )}
 
         {boardView === "3d" ? null : (
           <nav className="parchment-footer-nav order-4" aria-label="棋局导航">

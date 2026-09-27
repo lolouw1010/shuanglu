@@ -31,6 +31,9 @@ The current priority is a stable playable baseline and clear handoff documentati
 - Shortened and enlarged the horse pieces so they read as playable counters instead of tall foreground vases.
 - Mobile `/3d` now hides the oversized victory tracker, keeps the dice action compact, and reserves the primary viewport for the board.
 - Source and target feedback remains on the play surface and was browser-checked after rolling and selecting a horse.
+- Added matching transparent 2.5D character cutouts to the fixed-angle scene: the white player sits at the near-left edge and Song Huizong sits at the far-right edge, both turned toward the board.
+- Removed the duplicate parchment character columns from `/3d`; player names plus borne-off and bar counts now live in compact scene nameplates.
+- Optimized the new 512x768 character assets to 181 KB and 231 KB while preserving alpha transparency.
 
 ## Production Baseline
 
