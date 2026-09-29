@@ -1995,3 +1995,10 @@ npm run build: passed.
 1440x1000 desktop screenshot QA: passed.
 Interactive roll, source selection, and target move: passed.
 ```
+
+Follow-up board-art refinement:
+
+- Align the live board's camera with the illustrated table's shallower perspective.
+- Replace filled backgammon triangles with gilt route lines and circular inlaid positions.
+- Replace the prior vase/pawn silhouette with tapered jade and black-lacquer horses.
+- Preserve the same rules, source/target interaction, and enlarged mobile touch lanes.

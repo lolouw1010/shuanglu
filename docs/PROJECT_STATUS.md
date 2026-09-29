@@ -1024,6 +1024,7 @@ https://shuanglu.uway.click/3d
 - The live Three.js board remains interactive and is perspective-registered over the room's lacquer tabletop.
 - Mobile and desktop browser QA passed at 430x932 and 1440x1000, including one complete source-to-target move.
 - The previous corner-character treatment remains in Git history but is superseded by this room composition.
+- The live board now follows the room table's shallower oblique angle and uses museum-informed Chinese double-sixes cues: black lacquer, gilt framing, circular inlaid positions, fine route lines, and tapered jade/lacquer horses.
 
 ## Known Risks
 

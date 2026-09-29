@@ -3923,6 +3923,21 @@ npm test: 11 files and 46 tests passed.
 npm run build: passed; five Next.js routes generated.
 ```
 
+### Chinese Board and Horse Refinement
+
+- Recalibrated the orthographic camera so the live board's long-edge screen slope is about `0.24`, matching the illustrated lacquer table instead of the earlier `0.45` diagonal.
+- Replaced the Western backgammon-style filled triangles with thin gilt routes and twelve mother-of-pearl-style circular positions along each long edge.
+- Restyled the board as a thinner black-lacquer tray with a gilt rectangular frame and central round inlay.
+- Rebuilt the horses as tapered jade and black-lacquer forms with a restrained gilt waist band.
+- Based these cues on the Palace Museum's documented double-sixes board: gilt rectangular framing, twelve inlaid circular positions on each long side, and tapered black/white horses.
+- Rechecked 430x932 and 1440x1000 layouts and completed a mobile move from point 5 to point 3 after rolling 2/5.
+
+Reference:
+
+```txt
+https://www.dpm.org.cn/collection/enamel/228129.html?hl=%E6%A3%8B
+```
+
 ## 2026-09-26 Mobile Contrast and Piece-Conservation Pass
 
 ### Scope
