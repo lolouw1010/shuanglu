@@ -1977,3 +1977,21 @@ Non-Shuanglu services observed but not changed:
 gaokao-sprint-coach online
 school-application online
 ```
+
+## 2026-09-29 Integrated 3D Room Release
+
+Purpose:
+
+- Replace the rejected floating character overlays with the approved unified scholar-room composition.
+- Keep the existing live Three.js board and rules engine interactive inside the illustrated tabletop.
+- Publish through the tracked Linode atomic-release workflow only after local tests, production build, and portrait/desktop browser QA pass.
+
+Pre-deployment verification:
+
+```txt
+npm test: 11 files and 46 tests passed.
+npm run build: passed.
+430x932 portrait screenshot QA: passed.
+1440x1000 desktop screenshot QA: passed.
+Interactive roll, source selection, and target move: passed.
+```

@@ -3898,6 +3898,31 @@ Desktop horizontal overflow: none (clientWidth 1280, scrollWidth 1280).
 - Downscaled the final assets from 1024x1536 to 512x768 and reduced their combined size from about 5.1 MB to about 412 KB while retaining alpha transparency.
 - Browser-checked the integrated scene at 430x932 and 1280x900 with zero console errors and no horizontal overflow.
 
+## 2026-09-29 Integrated Scholar-Room Scene
+
+### Objective
+
+Replace the rejected corner character overlays with one coherent pseudo-3D room in which both players are physically seated around the live board.
+
+### Implementation
+
+- Added separate portrait and landscape scholar-room backgrounds so mobile and desktop use intentional compositions rather than one stretched crop.
+- Removed the two floating character figures and their nameplates from `GameTable3D`.
+- Made the Three.js canvas transparent and registered it over the empty lacquer tabletop, preserving live pieces, legal-move highlighting, and click handling.
+- Added invisible full-lane hit surfaces for actionable points to improve mobile touch accuracy without enlarging the visual markers.
+- Compressed the final room assets to about 220 KB and 263 KB WebP files.
+
+### Verification
+
+```txt
+430x932 portrait: integrated room, characters, and live board align without overlay portraits.
+1440x1000 desktop: landscape room and live board align without horizontal overflow.
+Browser flow: roll 3/4, select point 5, move to point 2; passed.
+Browser console: zero errors; existing Three.js deprecation warnings remain.
+npm test: 11 files and 46 tests passed.
+npm run build: passed; five Next.js routes generated.
+```
+
 ## 2026-09-26 Mobile Contrast and Piece-Conservation Pass
 
 ### Scope

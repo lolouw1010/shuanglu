@@ -1017,6 +1017,14 @@ https://shuanglu.uway.click/
 https://shuanglu.uway.click/3d
 ```
 
+## 2026-09-29 3D Room Direction
+
+- The approved 3D direction is now a unified scholar's room rather than character cutouts around a standalone board.
+- Portrait and landscape room compositions are tracked as optimized WebP assets.
+- The live Three.js board remains interactive and is perspective-registered over the room's lacquer tabletop.
+- Mobile and desktop browser QA passed at 430x932 and 1440x1000, including one complete source-to-target move.
+- The previous corner-character treatment remains in Git history but is superseded by this room composition.
+
 ## Known Risks
 
 - Production uses Node.js 20. Local development must use the version pinned in `.nvmrc` to avoid Node 24/production drift.

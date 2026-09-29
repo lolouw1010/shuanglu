@@ -1,7 +1,6 @@
 "use client";
 
 import { Canvas, useThree } from "@react-three/fiber";
-import Image from "next/image";
 import { useLayoutEffect, useMemo } from "react";
 import { DoubleSide, LatheGeometry, OrthographicCamera, Shape, Vector2 } from "three";
 import type { BoardState, Move, Player, Point } from "@/game";
@@ -203,6 +202,19 @@ function BoardPoint3D({
     <group position={[position.x, 0.16, position.z]}>
       {isActionable ? (
         <mesh
+          position={[0, 0.025, position.direction * (POINT_LENGTH / 2)]}
+          rotation={[-Math.PI / 2, 0, 0]}
+          onClick={(event) => {
+            event.stopPropagation();
+            handleClick();
+          }}
+        >
+          <planeGeometry args={[POINT_STEP * 0.94, POINT_LENGTH]} />
+          <meshBasicMaterial transparent opacity={0.002} depthWrite={false} />
+        </mesh>
+      ) : null}
+      {isActionable ? (
+        <mesh
           position={[0, -0.008, 0]}
           rotation={[-Math.PI / 2, 0, 0]}
           scale={[1.12, 1.12, 1.12]}
@@ -283,21 +295,6 @@ function BoardPoint3D({
           />
         </mesh>
       ) : null}
-    </group>
-  );
-}
-
-function StudyAtmosphere() {
-  return (
-    <group>
-      <mesh receiveShadow rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.08, 0]}>
-        <planeGeometry args={[20, 14]} />
-        <meshStandardMaterial color="#3a281f" roughness={0.9} />
-      </mesh>
-      <mesh position={[0, -0.055, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-        <circleGeometry args={[7.2, 72]} />
-        <meshStandardMaterial color="#241814" roughness={0.96} />
-      </mesh>
     </group>
   );
 }
@@ -453,7 +450,6 @@ function FixedCamera() {
 function Scene(props: GameTable3DProps) {
   return (
     <>
-      <color attach="background" args={["#211611"]} />
       <ambientLight intensity={0.9} />
       <hemisphereLight args={["#f7ddb0", "#24130e", 1.35]} />
       <directionalLight
@@ -463,7 +459,6 @@ function Scene(props: GameTable3DProps) {
         shadow-mapSize={[1024, 1024]}
       />
       <pointLight position={[-5.2, 3.8, 3.2]} color="#efc27a" intensity={1.25} />
-      <StudyAtmosphere />
       <LacquerBoard {...props} />
       <FixedCamera />
     </>
@@ -471,52 +466,23 @@ function Scene(props: GameTable3DProps) {
 }
 
 export function GameTable3D(props: GameTable3DProps) {
-  const total = props.state.ruleConfig.horsesPerPlayer;
-
   return (
-    <section className="game-3d-shell" aria-label="固定视角双陆棋桌">
+    <section className="game-3d-shell" aria-label="书斋对弈场景中的固定视角双陆棋桌">
       <div className="game-3d-badge">
-        <span>宋韵棋案</span>
-        <strong>固定视角</strong>
+        <span>月下书斋</span>
+        <strong>对弈中</strong>
       </div>
       <div className="game-3d-canvas">
         <Canvas
           orthographic
           camera={{ position: [8.4, 9.8, 10.6], zoom: 48 }}
           dpr={[1, 1.4]}
+          gl={{ alpha: true, antialias: true }}
           shadows
         >
           <Scene {...props} />
         </Canvas>
       </div>
-      <figure className="game-3d-character game-3d-character-white">
-        <Image
-          src="/assets/characters/li-qingzhao-isometric.png"
-          alt="白方游局人斜俯对弈立绘"
-          width={512}
-          height={768}
-          sizes="(max-width: 600px) 24vw, 180px"
-        />
-        <figcaption>
-          <span>白方 · 你</span>
-          <strong>游局人</strong>
-          <small>出 {props.state.borneOff.white}/{total} · 栏 {props.state.bar.white}</small>
-        </figcaption>
-      </figure>
-      <figure className="game-3d-character game-3d-character-black">
-        <Image
-          src="/assets/characters/song-emperor-isometric.png"
-          alt="黑方宋徽宗斜俯对弈立绘"
-          width={512}
-          height={768}
-          sizes="(max-width: 600px) 21vw, 160px"
-        />
-        <figcaption>
-          <span>黑方 · 对手</span>
-          <strong>宋徽宗</strong>
-          <small>出 {props.state.borneOff.black}/{total} · 栏 {props.state.bar.black}</small>
-        </figcaption>
-      </figure>
     </section>
   );
 }
