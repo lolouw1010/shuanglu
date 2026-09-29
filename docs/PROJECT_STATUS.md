@@ -1025,6 +1025,7 @@ https://shuanglu.uway.click/3d
 - Mobile and desktop browser QA passed at 430x932 and 1440x1000, including one complete source-to-target move.
 - The previous corner-character treatment remains in Git history but is superseded by this room composition.
 - The live board now follows the room table's shallower oblique angle and uses museum-informed Chinese double-sixes cues: black lacquer, gilt framing, circular inlaid positions, fine route lines, and tapered jade/lacquer horses.
+- The portrait and landscape room backgrounds now use the live camera's calculated projection: `13.511°` along the long edge and `55.142°` along the depth edge, with the four board corners registered inside the illustrated tabletop.
 
 ## Known Risks
 

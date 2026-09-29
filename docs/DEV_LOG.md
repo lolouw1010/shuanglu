@@ -3938,6 +3938,30 @@ Reference:
 https://www.dpm.org.cn/collection/enamel/228129.html?hl=%E6%A3%8B
 ```
 
+## 2026-09-30 Table-Perspective Registration
+
+### Objective
+
+Correct the remaining perspective mismatch between the illustrated table and the live WebGL board without changing the approved board camera or room direction.
+
+### Implementation
+
+- Projected the four outer board corners through the production Three.js camera instead of estimating the angle by eye.
+- Measured a `13.511°` long-edge slope and a `55.142°` depth-edge angle in image coordinates.
+- Generated independent portrait and landscape room backgrounds whose empty lacquer tabletop contains the exact projected board quadrilateral.
+- Kept the previous room assets in source and switched the two responsive background references to versioned `v2` WebP files.
+
+### Verification
+
+```txt
+430x932 portrait composite: board corners and table inset align; passed.
+1440x1000 landscape composite: board corners and table inset align; passed.
+Browser roll interaction: passed with zero console errors.
+npm run typecheck: passed.
+npm test: 11 files and 46 tests passed.
+npm run build: passed; five Next.js routes generated.
+```
+
 ## 2026-09-26 Mobile Contrast and Piece-Conservation Pass
 
 ### Scope

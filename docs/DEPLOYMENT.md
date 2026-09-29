@@ -2002,3 +2002,10 @@ Follow-up board-art refinement:
 - Replace filled backgammon triangles with gilt route lines and circular inlaid positions.
 - Replace the prior vase/pawn silhouette with tapered jade and black-lacquer horses.
 - Preserve the same rules, source/target interaction, and enlarged mobile touch lanes.
+
+Perspective-registration follow-up:
+
+- Replace the portrait and landscape room backgrounds with separately generated `v2` WebP assets.
+- Register each empty tabletop to the live camera's projected board quadrilateral rather than an estimated visual angle.
+- Keep the board camera and interaction geometry unchanged.
+- Require portrait and desktop composite screenshot QA, a browser roll check, type checking, all 46 tests, and a production build before the Linode release.
