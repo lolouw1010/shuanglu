@@ -419,11 +419,8 @@ button:focus-visible {
 }
 
 .game-3d-canvas {
-  height: 49%;
-  left: 24.5%;
+  inset: 0;
   position: absolute;
-  top: 25.5%;
-  width: 63%;
   z-index: 1;
 }
 
@@ -2926,10 +2923,7 @@ button:focus-visible {
   }
 
   .game-3d-canvas {
-    height: 34%;
-    left: 19.5%;
-    top: 31.5%;
-    width: 78.5%;
+    inset: 0;
   }
 
   .game-3d-victory {

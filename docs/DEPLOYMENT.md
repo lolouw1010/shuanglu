@@ -2009,3 +2009,23 @@ Perspective-registration follow-up:
 - Register each empty tabletop to the live camera's projected board quadrilateral rather than an estimated visual angle.
 - Keep the board camera and interaction geometry unchanged.
 - Require portrait and desktop composite screenshot QA, a browser roll check, type checking, all 46 tests, and a production build before the Linode release.
+
+## 2026-10-03 Perspective-Inset Board Release
+
+Purpose:
+
+- Replace the remaining orthographic board/table mismatch with responsive perspective-camera registration.
+- Enlarge the playable surface and horses without covering either seated character.
+- Remove the duplicate raised board shell and refine the live surface toward Chinese lacquer, jade, cinnabar, and gilt details.
+
+Pre-deployment verification:
+
+```txt
+npm run typecheck: passed.
+npm test: 11 files and 46 tests passed.
+npm run build: passed.
+430x932 portrait screenshot QA: passed.
+1440x1000 desktop screenshot QA: passed.
+Interactive roll, source selection, and target move: passed.
+Browser console: zero errors.
+```

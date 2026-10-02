@@ -3962,6 +3962,33 @@ npm test: 11 files and 46 tests passed.
 npm run build: passed; five Next.js routes generated.
 ```
 
+## 2026-10-03 Perspective-Inset Board Refinement
+
+### Objective
+
+Replace the remaining orthographic board-on-table effect with one perspective-correct playing surface, enlarge the board and horses, and strengthen the Chinese lacquer-and-jade art direction.
+
+### Implementation
+
+- Replaced the responsive orthographic camera with separate portrait and landscape perspective-camera presets fitted to the illustrated tabletop.
+- Expanded the Three.js canvas across the whole room scene so camera projection, rather than a cropped CSS rectangle, controls registration.
+- Removed the thick duplicate board body and shadow plane; the live playing surface now reads as an inset in the illustrated lacquer table.
+- Increased normal horse scale from `0.43` to `0.58` and selected horse scale from `0.49` to `0.66`.
+- Refined the horses toward pale jade and black lacquer, with a restrained aged-metal waist inlay.
+- Enlarged the circular route inlays, replaced solid gold side blocks with cinnabar trays and fine gilt borders, and added a subtle four-petal persimmon-calyx center motif.
+
+### Verification
+
+```txt
+430x932 portrait composite: perspective board aligned and clear of character occlusion.
+1440x1000 landscape composite: board edges follow the illustrated tabletop convergence.
+Browser flow: roll 5/3, select point 5, move to point 2; passed.
+Browser console: zero errors; existing Three.js deprecation warnings remain.
+npm run typecheck: passed.
+npm test: 11 files and 46 tests passed.
+npm run build: passed; five Next.js routes generated.
+```
+
 ## 2026-09-26 Mobile Contrast and Piece-Conservation Pass
 
 ### Scope
